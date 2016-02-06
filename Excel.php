@@ -1,6 +1,6 @@
 <?php
 
-namespace moonland\phpexcel;
+namespace maz0717\phpexcel;
 
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
@@ -19,7 +19,7 @@ use yii\i18n\Formatter;
  * 
  * // export data only one worksheet.
  * 
- * \moonland\phpexcel\Excel::widget([
+ * \maz0717\phpexcel\Excel::widget([
  * 		'models' => $allModels,
  * 		'mode' => 'export', //default value as 'export'
  * 		'columns' => ['column1','column2','column3'],
@@ -27,7 +27,7 @@ use yii\i18n\Formatter;
  * 		'header' => ['column1' => 'Header Column 1','column2' => 'Header Column 2', 'column3' => 'Header Column 3'],
  * ]);
  * 
- * \moonland\phpexcel\Excel::export([
+ * \maz0717\phpexcel\Excel::export([
  * 		'models' => $allModels,
  * 		'columns' => ['column1','column2','column3'],
  * 		//without header working, because the header will be get label from attribute label.
@@ -36,7 +36,7 @@ use yii\i18n\Formatter;
  * 
  * // export data with multiple worksheet.
  * 
- * \moonland\phpexcel\Excel::widget([
+ * \maz0717\phpexcel\Excel::widget([
  * 		'isMultipleSheet' => true,
  * 		'models' => [
  * 			'sheet1' => $allModels1, 
@@ -57,7 +57,7 @@ use yii\i18n\Formatter;
  * 		],
  * ]);
  * 
- * \moonland\phpexcel\Excel::export([
+ * \maz0717\phpexcel\Excel::export([
  * 		'isMultipleSheet' => true,
  * 		'models' => [
  * 			'sheet1' => $allModels1, 
@@ -86,7 +86,7 @@ use yii\i18n\Formatter;
  * 
  * ~~~
  * 
- * \moonland\phpexcel\Excel::export([
+ * \maz0717\phpexcel\Excel::export([
  *  	'models' => Post::find()->all(),
  *     	'columns' => [
  *     		'author.name:text:Author Name',
@@ -117,9 +117,9 @@ use yii\i18n\Formatter;
  * 
  * ~~~
  * 
- * $data = \moonland\phpexcel\Excel::import($fileName, $config); // $config is an optional
+ * $data = \maz0717\phpexcel\Excel::import($fileName, $config); // $config is an optional
  * 
- * $data = \moonland\phpexcel\Excel::widget([
+ * $data = \maz0717\phpexcel\Excel::widget([
  * 		'mode' => 'import',
  * 		'fileName' => $fileName,
  * 		'setFirstRecordAsKeys' => true, // if you want to set the keys of record column with first record, if it not set, the header with use the alphabet column on excel.
@@ -127,7 +127,7 @@ use yii\i18n\Formatter;
  * 		'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
  * ]);
  * 
- * $data = \moonland\phpexcel\Excel::import($fileName, [
+ * $data = \maz0717\phpexcel\Excel::import($fileName, [
  * 		'setFirstRecordAsKeys' => true, // if you want to set the keys of record column with first record, if it not set, the header with use the alphabet column on excel.
  * 		'setIndexSheetByName' => true, // set this if your excel data with multiple worksheet, the index of array will be set with the sheet name. If this not set, the index will use numeric.
  * 		'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
@@ -135,7 +135,7 @@ use yii\i18n\Formatter;
  *
  * // import data with multiple file.
  * 
- * $data = \moonland\phpexcel\Excel::widget([
+ * $data = \maz0717\phpexcel\Excel::widget([
  * 		'mode' => 'import',
  * 		'fileName' => [
  * 			'file1' => $fileName1,
@@ -147,7 +147,7 @@ use yii\i18n\Formatter;
  * 		'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
  * ]);
  * 
- * $data = \moonland\phpexcel\Excel::import([
+ * $data = \maz0717\phpexcel\Excel::import([
  * 			'file1' => $fileName1,
  * 			'file2' => $fileName2,
  * 			'file3' => $fileName3,
@@ -166,32 +166,32 @@ use yii\i18n\Formatter;
  * // only one sheet or specified sheet.
  * 
  * Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2));
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2));
  * 
  * // data with multiple worksheet
  * 
  * Array([Sheet1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2)),
  * [Sheet2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)));
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2)));
  * 
  * // data with multiple file and specified sheet or only one worksheet
  * 
  * Array([file1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2)),
  * [file2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)));
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2)));
  * 
  * // data with multiple file and multiple worksheet
  * 
  * Array([file1] => Array([Sheet1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2)),
  * [Sheet2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2))),
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2))),
  * [file2] => Array([Sheet1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2)),
  * [Sheet2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2), 
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2))));
+ * [1] => Array([name] => Example, [email] => example@maz0717soft.com, [framework interest] => Yii2))));
  * 
  * ~~~
  * 
@@ -680,7 +680,7 @@ class Excel extends \yii\base\Widget
 	 * 
 	 * ~~~
 	 * 
-	 * \moonland\phpexcel\Excel::export([
+	 * \maz0717\phpexcel\Excel::export([
 	 * 		'models' => $allModels,
 	 * 		'columns' => ['column1','column2','column3'],
 	 * 		//without header working, because the header will be get label from attribute label.
@@ -696,7 +696,7 @@ class Excel extends \yii\base\Widget
 	 * 
 	 * ~~~
 	 * 
-	 * \moonland\phpexcel\Excel::export([
+	 * \maz0717\phpexcel\Excel::export([
 	 *  	'models' => Post::find()->all(),
 	 *     	'columns' => [
 	 *     		'author.name:text:Author Name',
@@ -736,7 +736,7 @@ class Excel extends \yii\base\Widget
 	 * 
 	 * ~~~
 	 * 
-	 * $data = \moonland\phpexcel\Excel::import($fileName, ['setFirstRecordAsKeys' => true]);
+	 * $data = \maz0717\phpexcel\Excel::import($fileName, ['setFirstRecordAsKeys' => true]);
 	 * 
 	 * ~~~
 	 * 
